@@ -2,7 +2,7 @@
 
 Updates every hour, but depends on if there is new data published.
 
-## Detailed analysis of all countries, UL, Austria, Germany, Italy, France, China, Switzerland, US
+## Detailed analysis of all countries, UK, Austria, Germany, Italy, France, China, Switzerland, US
 
 ![Logistic curve extrapolation](plots/logistic-plot.png)
 
