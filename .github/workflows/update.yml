@@ -21,7 +21,7 @@ jobs:
     - name: Install dependencies
       run: poetry install
 
-    - name: Get new value
+    - name: Get new values
       run: poetry run python main.py
 
     - name: Git Commit and Push
@@ -32,8 +32,8 @@ jobs:
         # Override branch to push to
         push-branch: 'master'
         # Specify commit message
-        commit-message: 'autoupdate'
+        commit-message: 'update graphs'
         force-add: 'true'
-        files: plots/exponential_extrapolation.png plots/exponential_fit.png
+        files: plots/
         name: bot
         email: no-reply@github.com
