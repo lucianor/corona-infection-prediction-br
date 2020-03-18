@@ -1,5 +1,13 @@
 [[package]]
 category = "main"
+description = "Safe, minimalistic evaluator of python expression using ast module"
+name = "asteval"
+optional = false
+python-versions = ">=3.5"
+version = "0.9.18"
+
+[[package]]
+category = "main"
 description = "Composable style cycles"
 name = "cycler"
 optional = false
@@ -19,6 +27,20 @@ version = "1.1.0"
 
 [package.dependencies]
 setuptools = "*"
+
+[[package]]
+category = "main"
+description = "Least-Squares Minimization with Bounds and Constraints"
+name = "lmfit"
+optional = false
+python-versions = ">=3.5"
+version = "1.0.0"
+
+[package.dependencies]
+asteval = ">=0.9.16"
+numpy = ">=1.16"
+scipy = ">=1.2"
+uncertainties = ">=3.0.1"
 
 [[package]]
 category = "main"
@@ -105,11 +127,28 @@ optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*"
 version = "1.14.0"
 
+[[package]]
+category = "main"
+description = "Transparent calculations with uncertainties on the quantities involved (aka error propagation); fast calculation of derivatives"
+name = "uncertainties"
+optional = false
+python-versions = "*"
+version = "3.1.2"
+
+[package.extras]
+all = ["numpy", "sphinx", "nose"]
+docs = ["sphinx"]
+optional = ["numpy"]
+tests = ["nose", "numpy"]
+
 [metadata]
-content-hash = "1211e37b26c03d071826fab13d95907d600deedfe0d34178a365eab9b26cf7d9"
+content-hash = "c7ad4942d360156a1f2476396e5d3cc8402d626664834a7f4e10eb869e530a4d"
 python-versions = "^3.7"
 
 [metadata.files]
+asteval = [
+    {file = "asteval-0.9.18.tar.gz", hash = "sha256:5d64e18b8a72c2c7ae8f9b70d1f80b68bbcaa98c1c0d7047c35489d03209bc86"},
+]
 cycler = [
     {file = "cycler-0.10.0-py2.py3-none-any.whl", hash = "sha256:1d8a5ae1ff6c5cf9b93e8811e581232ad8920aeec647c37316ceac982b08cb2d"},
     {file = "cycler-0.10.0.tar.gz", hash = "sha256:cd7b2d1018258d7247a71425e9f26463dfb444d411c39569972f4ce586b0c9d8"},
@@ -152,6 +191,9 @@ kiwisolver = [
     {file = "kiwisolver-1.1.0-cp38-none-win32.whl", hash = "sha256:76275ee077772c8dde04fb6c5bc24b91af1bb3e7f4816fd1852f1495a64dad93"},
     {file = "kiwisolver-1.1.0-cp38-none-win_amd64.whl", hash = "sha256:3b15d56a9cd40c52d7ab763ff0bc700edbb4e1a298dc43715ecccd605002cf11"},
     {file = "kiwisolver-1.1.0.tar.gz", hash = "sha256:53eaed412477c836e1b9522c19858a8557d6e595077830146182225613b11a75"},
+]
+lmfit = [
+    {file = "lmfit-1.0.0.tar.gz", hash = "sha256:aa005a3ed8fe759e89cba59c5e130b5ff0b73e9379c6d6b10240daabff706ed5"},
 ]
 matplotlib = [
     {file = "matplotlib-3.2.0-cp36-cp36m-macosx_10_9_x86_64.whl", hash = "sha256:0711b07920919951b2c508a773c433cbe07bdad952ea84ed9d18ca7853ccbe8b"},
@@ -246,4 +288,7 @@ scipy = [
 six = [
     {file = "six-1.14.0-py2.py3-none-any.whl", hash = "sha256:8f3cd2e254d8f793e7f3d6d9df77b92252b52637291d0f0da013c76ea2724b6c"},
     {file = "six-1.14.0.tar.gz", hash = "sha256:236bdbdce46e6e6a3d61a337c0f8b763ca1e8717c03b369e87a7ec7ce1319c0a"},
+]
+uncertainties = [
+    {file = "uncertainties-3.1.2.tar.gz", hash = "sha256:ba07c17a8a78cb58a47cd373079c7ea459f8b26cd474e29163b6ba0d72856a1e"},
 ]
