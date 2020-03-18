@@ -1,4 +1,6 @@
-# Live Covid-19 extrapolation of infected persons in Germany
+# Live Covid-19 extrapolation of infected persons in the United Kingdom
+
+Updates every hour, but depends on if there is new data published.
 
 ## Current situation on 2020-03-18:
 

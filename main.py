@@ -1,45 +1,30 @@
 import os
-
-import pandas as pd
-import numpy as np
-
-import matplotlib.pyplot as plt
-import matplotlib.dates as mdates
-
-from datetime import date
 import time
-from scipy.optimize import curve_fit
-from git import Repo
+from datetime import date
 
-CSV_FILENAME = "data/time_series_19-covid-Confirmed.csv"
+import matplotlib.dates as mdates
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+from scipy.optimize import curve_fit
+
+# CSV_FILENAME = "data/time_series_19-covid-Confirmed.csv"
 CSV_URL = 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/' \
           'csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Confirmed.csv'
-COUNTRY = "Germany"
-UPDATE_EVERY_HOUR = 4
-
-
-def download_csv():
-    df = pd.read_csv(CSV_URL)
-    df.to_csv(CSV_FILENAME)
-
+COUNTRY = "United Kingdom"
 
 def exponential(x, a, k, b):
     return a*np.exp(x*k) + b
 
-
 def main():
-
-    if not os.path.isfile(CSV_FILENAME):
-
-        download_csv()
-    else:
-        print("Use fetched data\n")
-
-    df = pd.read_csv(CSV_FILENAME)
+    print("Downloading new data")
+    df = pd.read_csv(CSV_URL)
+    print("Data downloaded")
 
     # filter just one country
     df = df[df["Country/Region"] == COUNTRY]
-    df = df.drop(columns=["Unnamed: 0", "Country/Region", "Province/State", "Lat", "Long"])
+    df = df[df["Province/State"] == COUNTRY]
+    df = df.drop(columns=["Country/Region", "Province/State", "Lat", "Long"])
     df = df.iloc[0]  # convert to pd.Series
 
     # start with first infections
@@ -54,7 +39,7 @@ def main():
 
     # Plot current DATA
     fig, ax = plt.subplots(figsize=(15, 10))
-    ax.plot(df.index, df.values, '*', label="Infections in Germany")
+    ax.plot(df.index, df.values, '*', label="Infections in the UK")
     ax.plot(df.index, exponential(time_in_days, *poptimal_exponential), 'g-', label="Exponential Fit")
     ax.set_xlabel("Date")
     ax.set_ylabel("Number of Infections")
@@ -81,7 +66,7 @@ def main():
 
     # Plot prediction
     fig, ax = plt.subplots(figsize=(15, 10))
-    ax.plot(df.index, df.values, '*', label="Infections in Germany")
+    ax.plot(df.index, df.values, '*', label="Infections in the UK")
     ax.plot(df_prediction.index, df_prediction.values, 'r--', label="Predicted Number of Infections")
     ax.set_xlabel("Date")
     ax.set_ylabel("Number of Infections")
@@ -92,27 +77,5 @@ def main():
     fig.autofmt_xdate()
     fig.savefig("plots/exponential_extrapolation.png", bbox_inches='tight')
 
-
-def git_push():
-    repo_dir = '.'
-    repo = Repo(repo_dir)
-    file_list = [
-        'main.py',
-        'plots/exponential_extrapolation.png',
-        'plots/exponential_fit.png'
-    ]
-    commit_message = 'Auto Update'
-    repo.index.add(file_list)
-    repo.index.commit(commit_message)
-    origin = repo.remote('origin')
-    origin.push()
-    print("Auto Update Complete")
-
-
 if __name__ == '__main__':
-
-    while True:
-        os.remove(CSV_FILENAME)
-        main()
-        git_push()
-        time.sleep(UPDATE_EVERY_HOUR*60*60)
+    main()

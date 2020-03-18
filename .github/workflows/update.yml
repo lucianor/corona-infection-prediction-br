@@ -1,0 +1,39 @@
+name: CI
+
+on:
+  schedule:
+    - cron:  '0 0,6,12,18 * * *'
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - uses: actions/checkout@v2
+
+    # Setup Python
+    - uses: actions/setup-python@v1
+    
+    # Setup Poetry
+    - name: Install Poetry
+      uses: dschep/install-poetry-action@v1.3
+
+    - name: Install dependencies
+      run: poetry install
+
+    - name: Get new value
+      run: poetry run python main.py
+
+    - name: Git Commit and Push
+      uses: github-actions-x/commit@v2.4
+      with:
+        # Github Token with commit access
+        github-token: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+        # Override branch to push to
+        push-branch: 'master'
+        # Specify commit message
+        commit-message: 'autoupdate'
+        force-add: 'true'
+        files: plots/exponential_extrapolation.png plots/exponential_fit.png
+        name: bot
+        email: no-reply@github.com
