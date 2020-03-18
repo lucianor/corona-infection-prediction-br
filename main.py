@@ -144,7 +144,8 @@ def generate_logistic_chart(df, countries):
         ax[i].set_xlim([np.min(x2),np.max(x2)])
         ax[i].set_ylabel('N cases')
         ax[i].yaxis.set_label_position("right")
-    ax[len(ax)-1].set_xlabel('days from today (negative: past)')
+    ax[len(ax) - 1].set_xlabel('days from today (negative: past)')
+    fig.suptitle(date.today())
     fig.savefig('plots/logistic-plot.png', bbox_inches='tight')
 
 if __name__ == '__main__':
