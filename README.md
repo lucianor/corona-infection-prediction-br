@@ -1,18 +1,34 @@
 # Live Covid-19 extrapolation of infected persons in the United Kingdom and elsewhere
 
-Updates every hour, but depends on if there is new data published.
+Updates as soon as new data is published.
 
-## Detailed analysis of all countries, UK, Austria, Germany, Italy, France, China, Switzerland, US
+I am obviously not an expert, and this should not be cited as an accurate prediction.
 
-![Logistic curve extrapolation](plots/logistic-plot.png)
+I am just curious as to whether these predictions remain accurate over time.
 
-## Current situation
+## Logistical extrapolation of confirmed cases for all countries, UK, Austria, Germany, Italy, France, China, Switzerland, US
 
-![Exponential fit](plots/exponential_fit.png)
+![Logistic curve extrapolation](plots//logistical/confirmedcases/logistic-plot.png)
 
-## Extrapolation for 10 days (Basic exponential growth assumed)
+## Logistical extrapolation of deaths for all countries, UK, Austria, Germany, Italy, France, China, Switzerland, US
 
-![Exponential Extrapolation](plots/exponential_extrapolation.png)
+![Logistic curve extrapolation](plots//logistical/deaths/logistic-plot.png)
+
+## Current confirmed cases for UK
+
+![Exponential fit](plots/exponential/confirmedcases/exponential_fit_UnitedKingdom.png)
+
+## Basic 10 day exponential extrapolation of confirmed cases for UK
+
+![Exponential Extrapolation](plots/exponential/confirmedcases/exponential_extrapolation_UnitedKingdom.png)
+
+## Current deaths for UK
+
+![Exponential fit](plots/exponential/deaths/exponential_fit_UnitedKingdom.png)
+
+## Basic 10 day exponential extrapolation of deaths for UK
+
+![Exponential Extrapolation](plots/exponential/deaths/exponential_extrapolation_UnitedKingdom.png)
 
 ## Data source
 
