@@ -224,8 +224,8 @@ optional = ["numpy"]
 tests = ["nose", "numpy"]
 
 [metadata]
-content-hash = "83eb3cc0ec3976ad1c477ffb72ea8447e52052ce2f8bf090ed932d6feaf06abd"
-python-versions = "^3.8"
+content-hash = "bf276f3a1ce4cd96f1f3097f598caf8ca57a3f20c0683f5a68f4b7a6596e9760"
+python-versions = "^3.7"
 
 [metadata.files]
 appdirs = [
