@@ -210,6 +210,7 @@ def generate_logistic_chart(df, countries, title, output_path):
     ax[len(ax) - 1].set_xlabel("days from today (negative: past)")
     fig.suptitle(f"{date.today()} - {title}")
     fig.savefig(output_path, bbox_inches="tight")
+    plt.close(fig)
 
 
 if __name__ == "__main__":
@@ -222,7 +223,11 @@ if __name__ == "__main__":
     mkdir(LOGISTICALCONFIRMED)
     mkdir(LOGISTICALDEATHS)
     df = get_data(CSV_URL)
-    generate_exponential_chart(df, COUNTRY, "Confirmed cases", EXPONENTIALCONFIRMED)
+    for c in COUNTRIES:
+        try:
+            generate_exponential_chart(df, c, "Confirmed cases", EXPONENTIALCONFIRMED)
+        except:
+            print(f"Could not generate exponential plot of confirmed cases for {c}")
     try:
         generate_logistic_chart(
             df, COUNTRIES, "Confirmed cases", f"{LOGISTICALCONFIRMED}/logistic-plot.png"
@@ -230,7 +235,11 @@ if __name__ == "__main__":
     except:
         print("Generating logistical plot for confirmed cases failed.")
     dfd = get_data(CSV_URL_DEATHS)
-    generate_exponential_chart(dfd, COUNTRY, "Deaths", EXPONENTIALDEATHS)
+    for c in COUNTRIES:
+        try:
+            generate_exponential_chart(dfd, c, "Deaths", EXPONENTIALDEATHS)
+        except:
+            print(f"Could not generate exponential plot of deaths for {c}")
     try:
         generate_logistic_chart(
             dfd, COUNTRIES, "Deaths", f"{LOGISTICALDEATHS}/logistic-plot.png"
