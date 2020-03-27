@@ -223,11 +223,17 @@ if __name__ == "__main__":
     mkdir(LOGISTICALDEATHS)
     df = get_data(CSV_URL)
     generate_exponential_chart(df, COUNTRY, "Confirmed cases", EXPONENTIALCONFIRMED)
-    generate_logistic_chart(
-        df, COUNTRIES, "Confirmed cases", f"{LOGISTICALCONFIRMED}/logistic-plot.png"
-    )
+    try:
+        generate_logistic_chart(
+            df, COUNTRIES, "Confirmed cases", f"{LOGISTICALCONFIRMED}/logistic-plot.png"
+        )
+    except:
+        print("Generating logistical plot for confirmed cases failed.")
     dfd = get_data(CSV_URL_DEATHS)
     generate_exponential_chart(dfd, COUNTRY, "Deaths", EXPONENTIALDEATHS)
-    generate_logistic_chart(
-        dfd, COUNTRIES, "Deaths", f"{LOGISTICALDEATHS}/logistic-plot.png"
-    )
+    try:
+        generate_logistic_chart(
+            dfd, COUNTRIES, "Deaths", f"{LOGISTICALDEATHS}/logistic-plot.png"
+        )
+    except:
+        print("Generating logistical plot for deaths failed.")
