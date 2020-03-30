@@ -1,10 +1,6 @@
-# Live Covid-19 extrapolation of infected persons in the United Kingdom and elsewhere
+# Live Covid-19 extrapolation of infected persons in Brazil
 
 Updates as soon as new data is published.
-
-I am obviously not an expert, and this should not be cited as an accurate prediction.
-
-I am just curious as to whether these predictions remain accurate over time.
 
 ## Logistical extrapolation of confirmed cases for all countries, UK, Austria, Germany, Italy, France, China, Switzerland, US
 
